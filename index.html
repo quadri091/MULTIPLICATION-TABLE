@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiplication Table</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        background: linear-gradient(to right, #e0eafc, #cfdef3);
+        display: flex;
+        align-items: start;
+        padding: 40px 0px;
+        justify-content: center;
+      }
+      section {
+        border-radius: 7px;
+        overflow: hidden;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: 0 0px 55px rgba(0, 0, 0, 0.1), 0 0px 35px rgba(0, 0, 0, 0.1),
+          0 0px 15px rgba(0, 0, 0, 0.1);
+        background-color: white;
+      }
+      main {
+        display: flex;
+        gap: 15px;
+      }
+      h2 {
+        text-align: center;
+        color: #0077cc;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #0077cc;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #005fa3;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+        width: 140px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      .holder {
+        margin-top: 20px;
+        display: flex;
+      }
+      .new {
+        background-color: #f9f9f9;
+        border-left: 5px solid #0077cc;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        border-radius: 8px;
+        animation: animate 0.5s ease-in-out;
+        background-color: #f0f8ff;
+        border: 2px solid #0077cc;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        animation: animate 0.4s ease-in-out;
+        p {
+          font-size: 15px;
+          margin: 3px 0;
+        }
+        h3 {
+          margin: 10px 0px;
+          color: #0077cc;
+        }
+      }
+      @keyframes animate {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 570px) {
+        section {
+          padding: 30px;
+        }
+        h2 {
+          font-size: 20px;
+        }
+        input {
+          width: 100px;
+          font-size: 13px;
+        }
+        button {
+          padding: 7px 14px;
+        }
+        .new {
+          p {
+            font-size: 13px;
+          }
+          h3 {
+            font-size: 16px;
+          }
+        }
+      }
+      @media (max-width: 400px) {
+        section {
+          padding: 30px 0px;
+          width: 100%;
+        }
+        body {
+          padding: 40px 4%;
+        }
+        h2 {
+          font-size: 24px;
+          padding: 0px 3%;
+        }
+        main {
+          align-items: center;
+          flex-direction: column;
+        }
+        .holder {
+          justify-content: center;
+        }
+        button,
+        input {
+          width: 80%;
+        }
+        input {
+          padding: 10px;
+          font-size: 16px;
+        }
+        button {
+          padding: 10px 20px;
+        }
+        .new {
+          width: 93%;
+          p {
+            font-size: 15px;
+          }
+          h3 {
+            font-size: 19px;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>Multiplication Table Generator</h2>
+
+      <main>
+        <input type="number" id="input" placeholder="Start Number" />
+        <input type="number" id="second" placeholder="End Number" />
+        <button onclick="result()">Generate</button>
+      </main>
+      <div class="holder">
+        <div id="output"></div>
+      </div>
+    </section>
+  </body>
+</html>
+
+<script>
+  function result() {
+    let first = document.getElementById("input");
+    let second = document.getElementById("second");
+    let show = document.getElementById("output");
+    if (!+first.value.trim() || !+second.value.trim()) {
+      alert("Please fill the two Inputs");
+    } else {
+      if (+first.value.trim() >= +second.value.trim()) {
+        alert("Second Input should be greater than the first one");
+      } else {
+        for (
+          let int = +first.value.trim();
+          int <= +second.value.trim();
+          int++
+        ) {
+          console.log();
+          show.classList.add("new");
+          show.innerHTML += `<h3>Table of ${int}</h3>`;
+
+          for (let index = 1; index <= 12; index++) {
+            console.log(`${int} * ${index} = ${int * index}`);
+            show.innerHTML += `<p>${int} × ${index} = ${int * index}</p>`;
+          }
+        }
+      }
+    }
+  }
+</script>
