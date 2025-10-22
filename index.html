@@ -183,6 +183,9 @@
     let first = document.getElementById("input");
     let second = document.getElementById("second");
     let show = document.getElementById("output");
+
+    show.innerHTML = "";
+
     if (!+first.value.trim() || !+second.value.trim()) {
       alert("Please fill the two Inputs");
     } else {
