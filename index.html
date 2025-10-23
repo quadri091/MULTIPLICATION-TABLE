@@ -191,7 +191,18 @@
     } else if (+first.value.trim() <= 0 || +second.value.trim() <= 0) {
       alert("Please enter a valid number greater than 0");
     } else if (+first.value.trim() >= +second.value.trim()) {
-      alert("Second Input should be greater than the first one");
+      // alert("Second Input should be greater than the first one");
+
+      for (let int = +first.value.trim(); int >= +second.value.trim(); int--) {
+        console.log();
+        show.classList.add("new");
+        show.innerHTML += `<h3>Table of ${int}</h3>`;
+
+        for (let index = 1; index <= 12; index++) {
+          console.log(`${int} * ${index} = ${int * index}`);
+          show.innerHTML += `<p>${int} × ${index} = ${int * index}</p>`;
+        }
+      }
     } else {
       for (let int = +first.value.trim(); int <= +second.value.trim(); int++) {
         console.log();
